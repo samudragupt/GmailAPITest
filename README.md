@@ -17,3 +17,4 @@ Step4: Run apply_rules.py to filter the mails from your db and take action on em
 python3 apply_rules.py
 
 You can add your own rules to rules.json to add your new rules.
+ 
