@@ -21,8 +21,39 @@
       },
       "date_recieved":
       {
-        "from": -1,
-        "to": -1
+        "from": 10,
+        "to": 3
+      }
+    },
+    "action": {
+      "type": "mark as unread",
+      "move_to": ""
+    }
+  },
+  {
+    "description": "Rule 2",
+    "predicate": {
+      "type": "any",
+      "sender": {
+        "type": "contains",
+        "id": ["@naukri.com", "instahyre.com"]
+      },
+      "recipient": {
+        "type": "is",
+        "id": []
+      },
+      "cc": {
+        "type": "contains",
+        "id": []
+      },
+      "bcc": {
+        "type": "contains",
+        "id": []
+      },
+      "date_recieved":
+      {
+        "from": 3,
+        "to": 0
       }
     },
     "action": {
