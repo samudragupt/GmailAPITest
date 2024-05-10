@@ -1,0 +1,33 @@
+[
+  {
+    "description": "Rule 1",
+    "predicate": {
+      "type": "all",
+      "sender": {
+        "type": "contains",
+        "id": ["@naukri.com", "instahyre.com"]
+      },
+      "recipient": {
+        "type": "is",
+        "id": ["samudra15290@gmail.com"]
+      },
+      "cc": {
+        "type": "contains",
+        "id": []
+      },
+      "bcc": {
+        "type": "contains",
+        "id": []
+      },
+      "date_recieved":
+      {
+        "from": -1,
+        "to": -1
+      }
+    },
+    "action": {
+      "type": "mark as read",
+      "move_to": ""
+    }
+  }
+]
