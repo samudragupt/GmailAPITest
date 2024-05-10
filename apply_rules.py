@@ -32,7 +32,6 @@ def apply_actions_on_mail(mail_ids, action):
                 if action["type"] == "mark as read":
                     message.mark_as_read()
                 elif action["type"] == "mark as unread":
-                    print(message.subject)
                     message.mark_as_unread()
                 elif action["type"] == "move to":
                     if action["move_to"] == "inbox":
@@ -71,12 +70,13 @@ def construct_db_search_query(rule):
     """
     query = ""
     predicates = ['sender', 'recipient', 'cc', 'bcc']
+    predicate_type = "AND" if rule['predicate']['type'] == 'all' else "OR"
     for predicate in predicates:
         if rule['predicate'][predicate]['id']:
             if query == "":
                 query = "WHERE "
             else:
-                query += "AND "
+                query += f"{predicate_type} "
             type = "LIKE" if rule['predicate'][predicate]['type'] == 'contains' else "="
             operator = "%" if rule['predicate'][predicate]['type'] == 'contains' else ""
             query += f'({predicate} {type} "{operator}' + f'{operator}" OR {predicate} {type} "{operator}'.join(
@@ -85,8 +85,8 @@ def construct_db_search_query(rule):
     date_to = rule['predicate']['date_recieved']['to']
     date_from = date_from if date_from != -1 else 36500
     date_to = date_to if date_to != -1 else 0
-    query += f'AND date >= date("now", "-{date_from} days") '
-    query += f'AND date < date("now", "-{date_to} days") '
+    query += f'{predicate_type} (date >= date("now", "-{date_from} days") '
+    query += f'AND date < date("now", "-{date_to} days")) '
     return "SELECT id from emails " + query + ";"
 
 
