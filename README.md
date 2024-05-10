@@ -3,6 +3,7 @@
 Step 1 : Create a virtual environment and enter into it
 
 python -m venv GmailAPITest
+
 source GmailAPITest/bin/activate
 
 Result : Virtual Environment would have been created. You will have (GmailAPITest) in the beginning with the parenthesis.
